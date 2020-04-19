@@ -1,19 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-camera',
   templateUrl: './camera.component.html',
   styleUrls: ['./camera.component.css']
 })
-export class CameraComponent implements OnInit {
+export class CameraComponent implements ngAfterViewInit {
 
   @ViewChild('video') video;
 
 
   constructor() { }
 
-  ngOnInit() {
-    const videoElement: HTMLVideoElement = this.video.nativeElement();
+  ngAfterViewInit() {
+    const videoElement: HTMLVideoElement = this.video.nativeElement;
 
     navigator.mediaDevices.getUserMedia({
       video: {facingMode: 'user'}
